@@ -1,0 +1,80 @@
+@import './index.module.scss';
+
+.header{
+    font-size: 1.25vw;
+    margin-left: 1vw;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s;
+    span{
+        color: $primary-color;
+    }
+    &:hover{
+        opacity: .8;
+    }
+}
+
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modal-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background-color: rgba(116, 116, 116, 0.5);
+}
+
+.modal-body{
+    top: 50%;
+    position: fixed;
+    transition: all .2s;
+    z-index: 999;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 1.5vw;
+    border-radius: 1.5vw;
+    width: 30%;
+}
+
+.modal-header{
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+.modal-input{
+    width: 100%;
+    font-size: 1.5vw;
+    padding: 3px;
+    margin: .5vw 0;
+    border-radius: 10px;
+    transition: all .3s;
+    border: 2px solid lightgray;
+    &:focus{
+        outline: none;
+        border: 2px solid $primary-color;
+        box-shadow: 0 0 10px rgb(158, 158, 158);
+    }
+}
+
+.cities-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.city-item{
+    font-size: 1.25vw;
+    transition: all .3s;
+    padding: .1vw .5vw;
+    &:hover{
+        background-color: lightgray;
+        cursor: pointer;
+    }
+}

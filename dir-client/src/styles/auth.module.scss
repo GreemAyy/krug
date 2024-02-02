@@ -1,0 +1,219 @@
+@import './index.module.scss';
+
+.auth-block{
+    z-index:997;
+    position:fixed;
+    width:100vw;
+    height:100vh;
+    margin: 0;
+    background:white;
+    backdrop-filter: blur(10px);
+    background-color: $primary-color;
+    overflow: hidden;
+    transition:all .3s;
+}
+
+.close-btn{
+    margin: 1vw;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    font-size: 1.75vw;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+        margin: 1vw 1vw 1vw .5vw;
+    }
+    @media (max-width:865px) {
+        font-size: 5vw;
+    }
+}
+
+.auth-form-block{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all .3s;
+    transform: translate(-50%,-50%);
+    padding: 1vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-phone-block{
+    display: flex;
+    align-items: center;
+}
+
+.auth-phone-block{
+    margin: .5vw 0;
+    input{
+        font-size: 1.75vw;
+        border: 2px solid $primary-color;
+        border-radius: .5vw;
+        padding: .15vw;
+        transition: all .3s;
+        input:active{
+            border: 2px solid $primary-color;
+        }
+    }
+    @media (max-width:865px) {
+        input{
+            font-size: 7vw;
+            border: 3.5px solid $primary-color;
+            border-radius: 2vw;
+        }
+    }   
+}
+
+.auth-block-header{
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+    @media (max-width:865px) {
+        font-size: 12.5vw;
+    }
+}
+
+.auth-submit{
+    font-size: 1.75vw;
+    background-color: $primary-color;
+    text-align: center;
+    border-radius: .5vw;
+    font-weight: 600;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover{
+        opacity: .8;
+    }
+    @media (max-width:865px) {
+        font-size: 8vw;
+        border-radius: 2vw;
+        margin-top: 1.5vw;
+    }
+}
+
+.auth-error{
+    color:$primary-color;
+    margin-bottom:.5vw;
+    font-size:1.25vw;
+    @media (max-width:865px) {
+        font-size: 5vw;
+        margin-bottom:1.5vw;
+    }
+}
+
+.auth-scroll{
+    display: flex;
+    align-items: center;
+}
+
+
+.auth-code{
+    position: absolute;
+    background-color: white;
+    border-radius: 1vw;
+    transform: translate(-50%,50%);
+    padding: 1vw;
+    bottom: -100vw;
+    left: 50%;
+    transition: all .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media (max-width:865px) {
+        border-radius: 3vw;
+        padding: 1.5vw;
+    }
+}
+
+.auth-code-back{
+    cursor: pointer;
+    font-size: 1.25vw;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    @media (max-width:865px) {
+        font-size: 6vw;
+    }
+}
+
+.auth-code-header{
+    font-size: 1.5vw;
+    font-weight: 600;
+    span{
+        color: $primary-color;
+        font-weight: 900;
+    }
+    @media (max-width:865px) {
+        font-size: 6vw;
+    }
+}
+
+.auth-form-phone{
+    transition: all .3s;
+    background-color: white;
+    padding: 1vw;
+    border-radius: 1vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    @media (max-width:865px) {
+        border-radius: 3.5vw;
+        padding: 2vw;
+        max-width: 90vw;
+    }
+}
+
+.auth-code{
+    width: 25vw;
+    @media (max-width:865px) {
+        width: 90vw;
+    }
+}
+
+.auth-code-input{
+    margin: 0 auto;
+    font-size: 3vw;
+    width: 50%;
+    text-align: center;
+    border-radius: 1vw;
+    border: 3px solid $primary-color;
+    font-weight: 600;
+    &:focus{
+        border: 3px solid $primary-color;
+        outline: none;   
+    }
+    @media (max-width:865px) {
+        font-size: 12.5vw;
+        border-radius: 3vw;
+    }
+}
+.auth-code-input::-webkit-outer-spin-button,
+.auth-code-input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.auth-send-code{
+    text-align: center;
+    font-size: 1.75vw;
+    background-color: $primary-color;
+    font-weight: 600;
+    margin-top: .5vw;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+        opacity: .9;
+    }
+    @media (max-width:865px) {
+        font-size: 8vw;
+        margin-top: 2vw;
+        border-radius: 2vw;
+    }
+}

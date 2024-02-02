@@ -1,0 +1,37 @@
+.products-list-items{
+    display: flex;
+    flex-wrap: wrap;
+    @media (max-width:865px){
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+}
+.products-list-block{
+    width: 80%;
+    margin: 0 auto;
+    @media (max-width:1400px){
+        &{
+            width: 90%;
+        }
+    }
+    @media (max-width:865px){
+        &{
+            width: 100%;
+        }
+    }
+}
+
+.products-list-title{
+    font-size: 35px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.products-list{
+    margin-top: 20px;
+    a{
+        color: black;
+        display: block;
+        text-decoration: none;
+    }
+}

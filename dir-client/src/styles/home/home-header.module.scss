@@ -1,0 +1,134 @@
+@import '../index.module.scss';
+.header-logo{
+    font-weight: 700;
+}
+
+.active-item{
+    color: $primary-color;
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+}
+
+.header-cat-list{
+    top: 0;
+    display: flex;
+    background-color: rgb(255, 255, 255,.75);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    z-index: 10;
+    padding: 10px 0;
+    width: 90%;
+    transition: all .1s;
+    margin: 0 auto;
+    @media (max-width:865px) {
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        overflow-x: scroll;
+        font-size: 2.5vw;
+    }
+}
+
+.header-cat-item{
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+    margin:0 3%;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover{
+        color: $primary-color;
+    }
+    @media (max-width:1400px){
+        font-size: 22.5px;
+        padding: 0 2vw 0 0;
+    }
+}
+
+.header-cat-left{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    @media (max-width:865px) {
+        flex-wrap: nowrap;
+    }
+}
+
+.header-cart-btn{
+    font-size: 30px;
+    color: white;
+    font-weight: 600;
+    padding: 0px 20px 2px;
+    border-radius: 30px 0 0 30px;
+    background-color: $primary-color;
+    display: flex;
+}
+.header-car-right{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover{
+        opacity: .8;
+    }
+    @media (max-width:865px) {
+        display: none;
+    }
+}
+
+.header-cart-quantity{
+    padding: 0 15px 2px 7.5px;
+    font-weight: 700;
+    color: white;
+    border-radius: 0 30px 30px 0;
+    margin-left: 3px;
+    background-color: $primary-color;
+    transition: all .3s;
+    position: relative;
+}
+
+.header-arrow{
+    position: absolute;
+    z-index: 3;
+    top: 1px;
+    font-size: 35px;
+    transition: all .3s;
+    width: 30px;
+    height: 30px;
+    &{
+        width: 100%;
+    }
+}
+
+.header-up{
+    font-size: 55px;
+    display: flex;
+    align-items: end;
+    width: 80%;
+    margin: 10px auto 0;
+    justify-content: space-between;
+}
+
+.header-user{
+    font-size: 20px;
+}
+
+.user{
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+        opacity: .8;
+    }
+}
+
+.open-log{
+    
+}
