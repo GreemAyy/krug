@@ -58,6 +58,7 @@ export default ({item,index,inc,dec,del}:Input)=>{
         item.extras = addList.filter((item)=>indexes.includes(item.id)?item:void'')
         list[index] = item
         setList(list)
+        localStorage.setItem('cart',JSON.stringify(list))
         close()
     }
 

@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dir-client",
+    "\\dir-client\\src",
+    "\\dir-client\\src\\my-components",
+    "\\dir-client\\src\\my-components\\home",
+    "\\dir-client\\src\\my-components\\places"
+  ],
+  "SelectedNode": "\\dir-client\\src\\my-components\\home\\Header.tsx",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,9 +1,10 @@
-import { useCartStore, useHideScroll, useUserStore } from "@/store"
+import { useCartStore, useCityModal, useHideScroll, useUserStore } from "@/store"
 import style from '@/styles/home/cart.module.scss'
 import { updateLS } from "@/tools/list"
 import { useEffect, useRef, useState } from "react"
 import CartItem from "./CartItem"
 import { useRouter } from "next/navigation"
+import { createOrder } from "@/http/order.http"
 
 
 export default ()=>{
@@ -16,6 +17,7 @@ export default ()=>{
     const ref = useRef<HTMLDivElement>(null)
     const setHide = useHideScroll(s=>s.setHide)
     const id = useUserStore(s=>s.id)
+    const {open,setOpen} = useCityModal(s=>s)
     const router = useRouter()
 
     useEffect(()=>{
@@ -61,6 +63,21 @@ export default ()=>{
         return totalPrice
     }
 
+    const createNewOrder=async()=>{
+        //router.push(!id?'/auth':'/create-order')
+        const city = JSON.parse((localStorage.getItem('city'))||'{}')
+        if(city?.['id']){
+            setHide(false)
+            router.push(!id?'/auth':'/create-order')
+        }
+        else
+            setOpen(true)
+        // const create = await createOrder({
+        //     user_id:(id||0),
+        //     place_id:
+        // })
+    }
+
     return (<div style={{display:showBG?'block':'none'}} className={style['cart']}>
                 <div onClick={()=>setIsOpened(false)} className={style['cart-bg']}/>
                 <div
@@ -81,24 +98,23 @@ export default ()=>{
                         <>
                         <div className={style["cart-block-list"]}>
                         {
-                            list.map((item,i)=>
-                                <CartItem 
-                                key={i} 
-                                index={i} 
-                                inc={e=>changeQuantity(e,'inc')} 
-                                dec={e=>changeQuantity(e,'dec')} 
-                                del={del} 
-                                item={item}/>)
+                        list.map((item,i)=>
+                            <CartItem 
+                            key={i} 
+                            index={i} 
+                            inc={e=>changeQuantity(e,'inc')} 
+                            dec={e=>changeQuantity(e,'dec')} 
+                            del={del} 
+                            item={item}/>)
                         }
                         </div>
                         <div className={style["outer"]}></div>
                         <div
-                        onClick={()=>router.push(!id?'/auth':'/create-order')}
+                        onClick={()=>createNewOrder()}
                         className={style["cart-block-total-price-btn"]}>
                            {id?`Оформить заказ за ${calcPrice()}₽`:'Войдите в аккаунт'}
                         </div>
-                        </>
-                        :
+                        </> :
                         <div className={style["cart-is-empty"]}>
                             Корзина пуста. Наполните её
                         </div>

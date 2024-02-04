@@ -1,6 +1,6 @@
 import {z} from'zod'
 
-const InfoSchema = z.object({
+ const InfoSchema = z.object({
     price:z.number(),
     weight:z.number(),
     quantity:z.number(),

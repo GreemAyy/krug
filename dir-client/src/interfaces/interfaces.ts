@@ -37,3 +37,12 @@ export interface IPlace{
     street:string,
     building:string
 }
+
+export interface IOrder{
+    id?:number
+    user_id:number
+    place_id:number
+    products:ICart[]
+    total_price:number
+    status:number
+}

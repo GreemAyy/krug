@@ -7,12 +7,11 @@ import { useRouter } from 'next/navigation'
 import City from '@/my-components/places/City'
 import checkIsMobile from 'is-mobile'
 import Link from 'next/link'
+import CartIcon from '@/../static/CartIcon.png'
+import LogInIcon from '@/../static/LogInIcon.png'
+import UserIcon from '@/../static/UserIcon.png'
 
-type Input = {open:()=>void}
-const LogInIcon = "https://cdn0.iconfinder.com/data/icons/user-interface-2063/24/UI_Essential_icon_expanded-58-30.png"
-const UserIcon = "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-30.png"
-const CartIcon = "https://cdn0.iconfinder.com/data/icons/phosphor-regular-vol-4/256/shopping-cart-50.png"
-
+type Input = { open: () => void }
 export default ({open}:Input)=>{
     const {pickedIndex, setIndex} = useHeaderScrollStore(({index,setIndex})=>({pickedIndex:index,setIndex}))
     const {setIsOpened, list} = useCartStore(s=>s)
@@ -39,12 +38,11 @@ export default ({open}:Input)=>{
             </div>
             <div className={style["header-user"]}>
                 {   
-                    !isClient||
-                    !id?
+                    isClient&&(!id?
                     <div onClick={open} className={style["user"]}>
                         <img 
                         style={{width:'30px',margin:'0 auto'}}
-                        src={LogInIcon} alt="" />
+                        src={LogInIcon.src} alt="" />
                         <div>Войти</div>
                     </div>:
                     <div 
@@ -52,9 +50,9 @@ export default ({open}:Input)=>{
                     className={style["user"]}>
                         <img 
                         style={{width:'30px',margin:'0 auto'}}
-                        src={UserIcon} alt="" />
+                        src={UserIcon.src} alt="" />
                         <div>Профиль</div>    
-                    </div>
+                    </div>)
                 }
             </div>
         </div>
@@ -102,7 +100,7 @@ export default ({open}:Input)=>{
             <div 
             onClick={()=>setIsOpened(true)}
             className={style['cart-icon']}>
-                <img src={CartIcon} alt="" />        
+                <img src={CartIcon.src} alt="" />        
             </div>
         }
     </>)
