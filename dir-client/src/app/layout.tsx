@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat_Alternates as FontSans } from 'next/font/google'
 import index from '@/styles/index.module.scss'
 import '@/styles/global.scss'
+import '@/styles/globals.css'
 
 const font = FontSans({
   subsets:['cyrillic','latin'],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html style={{scrollBehavior:'smooth'}} lang="en" suppressHydrationWarning>
-      <body className={`${font.className} ${index['to-default']}`}>
+      <body className={`${font.variable} ${font.className} ${index['to-default']}`}>
         {children}
       </body>
     </html>

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ImageEntity, ProductEntity } from './products.entity';
-import { LessThan, MoreThan, MoreThanOrEqual, Repository } from 'typeorm';
+import { LessThan, Like, MoreThan, MoreThanOrEqual, Repository } from 'typeorm';
 import { ProductDto } from './products.dto';
 
 @Injectable()
@@ -38,5 +38,8 @@ export class ProductsService {
     }
     async getImage(id:number){
         return (await this.imageRepository.findOneBy({id}))?.name
+    }
+    async search(text:string){
+        return await this.productsRepository.findBy({name:Like(`%${text}%`),description:Like(`%${text}%`)})
     }
 }

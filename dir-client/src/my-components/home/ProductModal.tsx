@@ -1,4 +1,4 @@
-import { useCartStore, useHideScroll, useModalStore } from '@/store'
+import {cartPriceStore, useCartStore, useHideScroll, useModalStore} from '@/store'
 import style from '@/styles/home/modal.module.scss'
 import { useEffect, useRef, useState } from 'react'
 import { _URL, categories, primary_color } from '@/const'
@@ -61,6 +61,7 @@ export default ()=>{
         } as ICart
         const added = addItemToCart(toAdd,list)
         updateLS(added)
+        cartPriceStore.update('price')
         close()
     }
 

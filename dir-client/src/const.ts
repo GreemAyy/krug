@@ -1,11 +1,13 @@
-export const primary_color='rgba(255, 8, 0, 0.8)'
-export const _URL = 'http://localhost:4000'
+export const primary_color:string = 'rgba(255, 8, 0, 0.8)'
+export const primary_color_hex:string = "#FF0800"
+export const _URL:string = 'http://localhost:4000'
 export const categories:{[k:string]:string} = {
     'pizza':'Пицца',
     'snacks':'Закуски',
     'drinks':"Напитки",
     'desserts':"Десерты",
     'sauce':"Соус",
-    'another':'Другие'
+    // 'another':'Другие'
 }
-// export const _URL = 'https://6e576fcbd02e1b791f3f3d83f8ee6862.serveo.net'
+
+export const cancel_time_in_minutes:number = 10;

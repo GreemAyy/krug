@@ -27,7 +27,7 @@ export class PlacesController {
             return {create:false}
         }
     }
-    @Get('/get-city-like/:text')
+    @Get('/get-cities-like/:text')
     async getCitiesLike(@Param('text') text:string){
         console.log(text)
         if(text.length)

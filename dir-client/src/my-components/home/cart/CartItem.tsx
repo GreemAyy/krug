@@ -1,6 +1,6 @@
 import { _URL, primary_color } from "@/const";
 import { ICart } from "@/interfaces/interfaces";
-import { useCartStore } from "@/store";
+import {cartPriceStore, useCartStore} from "@/store";
 import style from '@/styles/home/cart.module.scss'
 import mstyle from '@/styles/home/modal.module.scss'
 import { addList, prefix } from "@/tools/list";
@@ -39,6 +39,7 @@ export default ({item,index,inc,dec,del}:Input)=>{
           }
     }
     useEffect(()=>{!isOpened?close():''},[isOpened])
+
     useEffect(()=>{
         filterIndexes()
         setIsMobile(checkIsMobile())
@@ -54,11 +55,12 @@ export default ({item,index,inc,dec,del}:Input)=>{
         filterIndexes()
     }
 
-    const save=()=>{
+    const save =()=>{
         item.extras = addList.filter((item)=>indexes.includes(item.id)?item:void'')
         list[index] = item
         setList(list)
         localStorage.setItem('cart',JSON.stringify(list))
+        cartPriceStore.update('price')
         close()
     }
 
@@ -70,41 +72,41 @@ export default ({item,index,inc,dec,del}:Input)=>{
                 </div>
                 <div className={style["cart-item-top"]}>
                     <div className={style["cart-item-image"]}>
-                        <img src={`${_URL}/api/products/image/${item.product.images_id[0]}`} alt="" />
+                        <img src={`${_URL}/api/products/image/${item?.product?.images_id[0]}`} alt="" />
                     </div>
                     <div className={style["cart-item-info"]}>
                         <div className={style["cart-item-name"]}>
-                            {item.product.name}
+                            {item?.product.name}
                         </div>
                         <div className={style["cart-item-size"]}>
-                            {converter({quantity:item.product.info[0].quantity,size:item.size})}
+                            {converter({quantity:item?.product.info[0].quantity,size:item?.size})}
                         </div>
                         <div className={style["cart-item-extras"]}>
                             {item.extras?.map((item,i)=>(
-                            <div key={item.id}>
-                                {item.name}
+                            <div key={item?.id}>
+                                {item?.name}
                             </div>))}
                         </div>
                     </div>
                 </div>
                 <div className={style["cart-item-bottom"]}>
                     <div className={style["cart-item-price"]}>
-                        {(item.quantity||1)*
-                        (item.product.info.filter(i=>i.size==item.size)[0].price)+
-                        (item.quantity||1)*((item.extras?.reduce((a,i)=>a+i.price,0))||0)}₽
+                        {(item?.quantity||1)*
+                        (item?.product.info.filter(i=>i?.size==item?.size)[0]?.price)+
+                        (item?.quantity||1)*((item?.extras?.reduce((a,i)=>a+i?.price,0))||0)}₽
                     </div>
                     <div className={style["cart-item-quantity"]}>
                         <button 
                         onClick={_=>dec(index)}
                         className={`${style["cart-item-btn"]} ${style["minus"]}`}>-</button >
-                        <div className={style["cart-item-quantity-count"]}>{item.quantity}</div>
+                        <div className={style["cart-item-quantity-count"]}>{item?.quantity}</div>
                         <button  
                         onClick={_=>inc(index)}
                         className={`${style["cart-item-btn"]} ${style["plus"]}`}>+</button >
                     </div>
                 </div>
                 {
-                    item.product.category=='pizza'?/*-?-*/
+                    item?.product.category=='pizza'?/*-?-*/
                     <div 
                     className={style["cart-item-extras"]}>
                         <div className={style["cart-item-extras-options"]}>
@@ -129,7 +131,7 @@ export default ({item,index,inc,dec,del}:Input)=>{
                             addList.map((item,i)=>(
                                 <div key={item.id+''+i} 
                                 onClick={()=>setIndexes(s=>s.includes(item.id)?s.filter(s=>s!=item.id):[...s,item.id])}
-                                style={{border:`2px solid ${indexes.includes(item.id)?primary_color:'white'}`}}
+                                style={{border:`2px solid ${indexes.includes(item?.id)?primary_color:'white'}`}}
                                 className={mstyle["product-modal-add-list-item"]}>
                                     <img className={mstyle["product-modal-add-list-item-img"]} src={prefix+item.image} alt="" />
                                     <div 

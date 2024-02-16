@@ -6,7 +6,8 @@ import style from '@/styles/account.module.scss'
 import { clearCookiesAll } from '@/tools/cookie'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { MoonLoader } from 'react-spinners' 
+import { MoonLoader } from 'react-spinners'
+import OrderList from "@/my-components/account/orderList";
 
 enum AlertStatus{
     Default='rgb(68, 118, 255)',
@@ -36,9 +37,9 @@ export default ()=>{
             router.replace('/')
     },[])
 
-    const update=async()=>{
+    const update = async()=> {
         const {update} = await updateUserHttp({id,hash,name:name,dob:date})
-        setAlertStatus(update?AlertStatus.Done:AlertStatus.Error)
+        setAlertStatus(update ? AlertStatus.Done : AlertStatus.Error)
     }
 
     return  <div className={style['account-block']}>
@@ -93,5 +94,6 @@ export default ()=>{
                         </button>
                     </div>
                 </div>}
+                <OrderList/>
             </div>
 }

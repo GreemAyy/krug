@@ -28,7 +28,7 @@ export class PlacesService {
         return await this.citiesRepository.findOneBy({id})
     }
     async getPlacesByCityId(id:number){
-        return await this.placesRepository.findBy({id})
+        return await this.placesRepository.findBy({city_id:id})
     }
     async getPlaceById(id:number){
         return await this.placesRepository.findOneBy({id})

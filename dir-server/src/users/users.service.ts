@@ -20,15 +20,12 @@ export class UsersService {
         return await this.usersRepository.findOneBy({id})
     }
     async createCode(phone:string){
-        const len = await this.checkCodeAlreadyCreated(phone)
-        if(len<=20){
-            const code = this.createNewCode()
-            await this.codesRepository.insert({phone,code,date:new Date()})
-            return code
-        }
-        return null 
+        const code = this.createNewCode()
+        await this.codesRepository.insert({phone, code, date:new Date()})
+        return code;
     }
     async createUser(phone:string,code:string){
+        console.log(phone, code )
         const checkCode = await this.checkCode(phone,code)
         if(checkCode){
             const alreadyCreated = await this.checkUserAlreadyCreated(phone)
@@ -44,6 +41,7 @@ export class UsersService {
                 user_id = (await this.usersRepository.findOneBy({phone})).id
             await this.hashesRepository.update({user_id},{hash})
             await this.changeCodeStatus(phone,code)
+            console.log({id:user_id, hash})
             return {id:user_id, hash}
         } 
         return null

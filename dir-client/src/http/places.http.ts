@@ -10,7 +10,7 @@ export const getCityById=async(id:number)=>{
 
 export const getCitiesLike=async(name:string)=>{
     return await ky
-    .get(`${_URL}/api/places-cities/get-city-like/${name}`)
+    .get(`${_URL}/api/places-cities/get-cities-like/${name}`)
     .json() as ICity[]
 }
 export const getPlacesByCityId=async(id:number)=>{
@@ -24,3 +24,4 @@ export const getPlaceById=async(id:number)=>{
     .get(`${_URL}/api/places-cities/get-place/${id}`)
     .json() as IPlace[]
 }
+

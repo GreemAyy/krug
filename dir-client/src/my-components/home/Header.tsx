@@ -85,7 +85,7 @@ export default ({open}:Input)=>{
                 style={{background:'transparent'}}
                 className={style['header-cart-quantity']}>
                     <div style={{opacity:+!hover,transition:'all .2s',color:primary_color}}>
-                        {list.reduce((a,i)=>a+(i.quantity||0),0)}
+                        {list.reduce((a,i)=>a+(i?.quantity||0),0)}
                     </div>
                     <div 
                     style={{opacity:+hover,width:'30px',height:'30px',color:primary_color}}

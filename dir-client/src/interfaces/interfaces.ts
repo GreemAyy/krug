@@ -44,5 +44,6 @@ export interface IOrder{
     place_id:number
     products:ICart[]
     total_price:number
-    status:number
+    status:number,
+    date_of_create:string
 }

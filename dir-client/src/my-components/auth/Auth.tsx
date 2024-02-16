@@ -22,7 +22,6 @@ export default ({show,close,selfPage=false}:Input)=>{
             setNext(true)
             setTimeout(()=>setAgain(true),60000)
             const code = await createCodeHttp(phone)
-            console.log(code)
         }else setErr(true)
     }
     const commit=async(e:string)=>{

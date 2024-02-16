@@ -1,0 +1,81 @@
+@import "../index.module";
+.block{
+    width: 70%;
+    margin: 1vw auto;
+    background: white;
+    padding: 1vw;
+    border-radius: 1.5vw;
+}
+.loading{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+}
+.header{
+    font-size: 2.5vw;
+    font-weight: 600;
+}
+.product-item{
+    display: flex;
+    align-items: center;
+}
+.product-item-img{
+    width: 10%;
+}
+.product-name{
+    font-size: 1.25vw;
+    font-weight: 600;
+    span{
+        font-weight: 400;
+    }
+}
+.product-extras{
+    margin-left: 1vw;
+}
+.buttons{
+    margin-top: 1vw;
+    display: flex;
+    justify-content: space-between;
+    button{
+        font-weight: 600;
+        font-size: 1.25vw;
+        margin: 0 .5vw;
+        transition: all .3s;
+    }
+}
+.pay{
+    background: #5f7dff;
+    &:hover{
+        background: #5f7dff;
+        opacity: .8;
+    }
+}
+.cancel{
+    background: red;
+    &:hover{
+        background: red;
+        opacity: .8;
+    }
+}
+.time{
+    font-size: 1.25vw;
+    color: $primary-color;
+    font-weight: 600;
+}
+
+.cancel-text{
+    color: red;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+
+.outer{
+    background: $primary-color;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

@@ -44,4 +44,10 @@ export class ProductsController{
         const name = await this.productsService.getImage(+id)
         res.sendFile(path.resolve(__dirname,'../../../images/',(name??'error_404.png')))
     }/*->*/
+    @Get('/search/:text')
+    async searchProducts(@Param("text") text:string){
+        console.log(text)
+        const search = await this.productsService.search(text)
+        return search
+    }
 }

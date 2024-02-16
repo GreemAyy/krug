@@ -2,6 +2,7 @@
 import { ICart, IProduct } from '@/interfaces/interfaces'
 import { getCookiesAll } from '@/tools/cookie'
 import {create} from 'zustand'
+import {GlobalStore} from "@/store/myStore";
 
 export const useUserStore=create<UserStore>(set=>{
     let cookies = null;
@@ -88,3 +89,5 @@ type CityModal={
     open:boolean
     setOpen:(o:boolean)=>void
 }
+
+export const cartPriceStore = new GlobalStore()

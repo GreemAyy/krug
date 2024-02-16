@@ -1,16 +1,20 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { OrderDto } from './orders.dto';
+import { OrderEntity } from './orders.entity';
 
 @Controller('orders')
 export class OrdersController {
     constructor(
         private orderService:OrdersService
-    ){}
-
+    ){
+        setInterval(()=>{
+            this.orderService.checkOrdersStatus()
+        },10000)
+    }
     @Post('/create')
-    async createOrder(@Body() order:OrderDto){
-        const id = this.orderService.createOrder(order)
+    async createOrder(@Body() order:OrderEntity){
+        const id = await this.orderService.createOrder(order)
         return {id:id||null}
     }
     @Get('/single/:id')

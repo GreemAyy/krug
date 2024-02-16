@@ -2,9 +2,10 @@ import { ProductEntity } from "src/products/products.entity";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 export enum OrderStatus{
-    Created = 0,
-    Canceled = 1,
-    Purchased = 2,
+    Created,
+    Canceled,
+    Preparing,
+    Done
 }
 
 @Entity('orders')
@@ -21,4 +22,6 @@ export class OrderEntity{
     total_price:number
     @Column({type:'varchar',length:30})
     status:number
+    @Column({type:'varchar',length:16})
+    date_of_create:string
 }

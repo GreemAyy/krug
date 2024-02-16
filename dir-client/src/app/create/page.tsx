@@ -1,8 +1,9 @@
 'use client'
 import { createProductHttp, uploadImageHttp } from '@/http/product.http';
-import { IProduct, Info, categories} from'@/interfaces/interfaces';
+import { IProduct, Info} from'@/interfaces/interfaces';
 import { useState } from'react';
 import { useForm } from'react-hook-form'
+import {categories} from "@/const";
 
 interface IParam{
     name:string
